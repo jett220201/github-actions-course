@@ -7,10 +7,16 @@ on:
     branches:
       - main
 jobs:
-  my_job:
+  build_and_test:
     runs-on: ubuntu-latest
     steps:
       - run: echo "A new commit has been pushed to the main branch!"
       - run: echo "Building the project..."
       - run: echo "Running tests..."
       - run: echo "Deployment successful!"
+  notification:
+    runs-on: ubuntu-latest
+    needs: build_and_test
+    steps:
+      - run: echo "Sending a notification..."
+      - run: echo "This job runs after the first one."
