@@ -1,7 +1,7 @@
 name: Deploy to server
 on: push
 jobs:
-  1_job:
+  first_job:
     runs-on: ubuntu-latest
     steps:
       - name: Hello World
