@@ -50,4 +50,13 @@ jobs:
         with:
           name: test_file
           path: test_file.log
-    
+  fifth_job:
+    runs-on: ubuntu-latest
+    needs: fouth_job
+    steps:
+      - name: Download file
+        uses: actions/download-artifact@v4
+        with:
+          name: test_file
+      - name: Show file content
+        run: cat test_file.log
