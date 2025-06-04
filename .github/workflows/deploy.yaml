@@ -22,7 +22,9 @@ jobs:
       - name: dir listing before
         run: ls -la
       - name: Action
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: .
       - name: dir listing after
         run: ls -la
     
