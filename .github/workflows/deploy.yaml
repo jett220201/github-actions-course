@@ -15,6 +15,11 @@ jobs:
     steps:
       - name: Hello Again
         run: echo "Hello again, ${{ github.ref == 'refs/heads/main' }}!"
+      - name: Variables
+        id: step_1
+        run: echo "my_variable=Hola" >> $GITHUB_OUTPUT
+      - name: Show Variables
+        run: echo "result is ${{ steps.step_1.outputs.my_variable }}"
   third_job:
     runs-on: ubuntu-latest
     needs: second_job
