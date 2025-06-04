@@ -1,0 +1,15 @@
+name: strategies
+
+on: push
+
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        message: ["hello", "code", "world"]
+        
+    steps:
+      - name: Print message
+        run: echo "${{ matrix.message }}"
