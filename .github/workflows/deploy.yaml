@@ -11,6 +11,8 @@ jobs:
   second_job:
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
+    outputs:
+      my_output: ${{ steps.step_1.outputs.my_variable }}
     needs: first_job
     steps:
       - name: Hello Again
@@ -23,6 +25,8 @@ jobs:
   third_job:
     runs-on: ubuntu-latest
     needs: second_job
+    env:
+      my_input: ${{ needs.second_job.outputs.my_output }}
     steps:
       - name: dir listing before
         run: ls -la
@@ -32,4 +36,6 @@ jobs:
           sparse-checkout: .
       - name: dir listing after
         run: ls -la
+      - name: Show Input
+        run: echo "my_input is ${{ env.my_input }}"
     
