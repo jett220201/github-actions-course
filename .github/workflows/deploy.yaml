@@ -38,16 +38,16 @@ jobs:
         run: ls -la
       - name: Show Input
         run: echo "my_input is ${{ env.my_input }}"
-    fouth_job:
-      runs-on: ubuntu-latest
-      needs: third_job
-      steps:
-        - name: Generate file
-          run: |
-            echo "Test file content" >> test_file.log
-        - name: Upload file
-          uses: actions/upload-artifact@v4
-          with:
-            name: test_file
-            path: test_file.log
+  fouth_job:
+    runs-on: ubuntu-latest
+    needs: third_job
+    steps:
+      - name: Generate file
+        run: |
+          echo "Test file content" >> test_file.log
+      - name: Upload file
+        uses: actions/upload-artifact@v4
+        with:
+          name: test_file
+          path: test_file.log
     
